@@ -4356,15 +4356,14 @@
 
   async function shareGame() {
     playSound("ui");
-    const canShareLink = window.location.protocol === "http:" || window.location.protocol === "https:";
-    if (!canShareLink) {
-      showToast("部署为网页后，就能把链接分享给别人");
-      return;
-    }
+    const publicUrl = "https://x15737876973-art.github.io/daur-quiz/";
+    const pageUrl = window.location.protocol === "http:" || window.location.protocol === "https:"
+      ? window.location.href
+      : publicUrl;
     const shareData = {
       title: document.title,
       text: "选一位达斡尔族英雄，用知识击退雾团兽！",
-      url: window.location.href
+      url: pageUrl
     };
     if (navigator.share) {
       try {
@@ -4375,10 +4374,10 @@
       }
     }
     try {
-      await navigator.clipboard.writeText(shareData.url);
+      await navigator.clipboard.writeText(pageUrl);
       showToast("游戏链接已复制，发给朋友吧");
     } catch (error) {
-      window.prompt("复制这个链接分享：", shareData.url);
+      window.prompt("复制这个链接分享：", pageUrl);
     }
   }
 
