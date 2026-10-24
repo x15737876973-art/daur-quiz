@@ -4515,7 +4515,7 @@ function showResult() {
   resultKicker.textContent = victory ? "VICTORY · 赤焰熄灭" : "DEFEAT · 雾团兽守住了赤焰";
   resultTitle.textContent = victory ? "赤焰熄灭！" : "赤焰未熄";
   resultSub.textContent = victory
-    ? `${hero.name}击破了雾团兽的最终形态，守住了草原的知识之火。赤焰散去，小兽抱着它的小木牌躲进了余烬里。`
+    ? `${hero.name}击破了雾团兽，守住了草原的知识之火。赤焰散去，小兽抱着它的小木牌躲进了余烬里。`
     : `雾团兽的赤焰仍在大地上跳动。${hero.name}，再读一遍解析，下一次把知识之火夺回来。`;
   resultReason.textContent = state.endReason || "战斗结束。";
   resultCorrect.textContent = String(state.correct);
@@ -4555,7 +4555,7 @@ function finishTurn() {
     state.over = true;
     state.winner = enemyDead ? "hero" : "enemy";
     state.endReason = enemyDead
-      ? `雾团兽的 HP 归零，${state.hero.name}用知识击破了它的进化形态。`
+      ? `雾团兽的 HP 归零，${state.hero.name}用知识击破了它的赤焰。`
       : `${state.hero.name}的 HP 归零，雾团兽的赤焰席卷了战场。`;
     renderPips();
     if (enemyDead) {
