@@ -4,19 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#190707">
-<meta name="description" content="《达斡尔族知识大乱斗》赤焰版：100道达斡尔族文化题库，5位英雄、5套衣装、10题随机对决。选择射手、法师或战士，用知识击退雾团兽。">
+<meta name="description" content="《达斡尔族知识大乱斗》赤焰版：100道达斡尔族文化题库，5位英雄、5套衣装，随机抽题直到击破会进化的雾团兽。">
 <meta property="og:title" content="达斡尔族知识大乱斗 · 赤焰试炼">
-<meta property="og:description" content="5位英雄、5套专属衣装、100道文化题，每局随机抽取10道。选射手、法师或战士，击退雾团兽。">
+<meta property="og:description" content="5位英雄、5套专属衣装、100道文化题。选射手、法师或战士，随机抽题直到击破会喷火、长翼、召唤陨石的雾团兽。">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:url" content="https://x15737876973-art.github.io/daur-quiz/">
-<meta property="og:image" content="https://x15737876973-art.github.io/daur-quiz/og.png?v=2">
+<meta property="og:image" content="https://x15737876973-art.github.io/daur-quiz/og.png?v=3">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="达斡尔族知识大乱斗：赤焰试炼">
 <meta property="og:site_name" content="达斡尔族知识大乱斗">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://x15737876973-art.github.io/daur-quiz/og.png?v=2">
+<meta name="twitter:image" content="https://x15737876973-art.github.io/daur-quiz/og.png?v=3">
 <link rel="canonical" href="https://x15737876973-art.github.io/daur-quiz/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231a0808'/%3E%3Cpath d='M32 7l22 21-22 29L10 28z' fill='none' stroke='%23f0bc66' stroke-width='2'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='28' font-family='KaiTi,serif' fill='%23f7d998'%3E达%3C/text%3E%3C/svg%3E">
 <title>达斡尔族知识大乱斗 · 赤焰试炼</title>
@@ -1553,6 +1553,413 @@ html{overflow-x:hidden;}
   .detail-quote p{font-size:10.5px;line-height:1.65;}
 }
 
+/* ============================================================
+   v3 · endless battle, evolving monster, hero faces, new attacks
+   ============================================================ */
+
+.evolution-hint{
+  margin:10px 0 0;
+  padding:9px 14px;
+  border:1px dashed rgba(239,191,105,.2);
+  border-radius:11px;
+  background:rgba(92,25,18,.22);
+  color:#c4a48f;
+  font-size:9px;
+  line-height:1.65;
+  text-align:center;
+}
+.evolution-hint span{
+  display:inline-block;
+  margin-right:6px;
+  padding:2px 6px;
+  border-radius:4px;
+  background:rgba(203,52,39,.18);
+  color:#f0b390;
+  font-size:7.5px;
+  font-weight:800;
+  letter-spacing:.08em;
+}
+.round-seal i{font-size:7px;letter-spacing:.06em;}
+.q-index em{min-width:15px;}
+
+/* ---------- Hero hurt faces ---------- */
+.hero-face--hurt{display:none;}
+.hero-fighter.hit .hero-face--normal{display:none;}
+.hero-fighter.hit .hero-face--hurt{display:block;}
+.hero-fighter.hit .hero-svg{filter:drop-shadow(0 0 10px rgba(255,105,72,.25));}
+.hero-fighter.hit .hero-figure{animation:heroHurt .74s cubic-bezier(.2,.8,.2,1);}
+
+/* ---------- Monster expression states ---------- */
+.monster-smug-eyes,.monster-smug-mouth,
+.monster-roar-eyes,.monster-roar-mouth,
+.monster-angry-eyes,.monster-angry-mouth{display:none;}
+
+.enemy-fighter.smug .monster-normal-eyes,
+.enemy-fighter.smug .monster-normal-mouth,
+.enemy-fighter.smug .monster-pain-eyes,
+.enemy-fighter.smug .monster-pain-mouth,
+.enemy-fighter.roaring .monster-normal-eyes,
+.enemy-fighter.roaring .monster-normal-mouth,
+.enemy-fighter.roaring .monster-pain-eyes,
+.enemy-fighter.roaring .monster-pain-mouth,
+.enemy-fighter.attacking .monster-normal-eyes,
+.enemy-fighter.attacking .monster-normal-mouth,
+.enemy-fighter.wing-attacking .monster-normal-eyes,
+.enemy-fighter.wing-attacking .monster-normal-mouth{display:none;}
+
+.enemy-fighter.smug .monster-smug-eyes,
+.enemy-fighter.smug .monster-smug-mouth{display:block;}
+.enemy-fighter.roaring .monster-roar-eyes,
+.enemy-fighter.roaring .monster-roar-mouth{display:block;}
+.enemy-fighter.attacking .monster-angry-eyes,
+.enemy-fighter.attacking .monster-angry-mouth,
+.enemy-fighter.wing-attacking .monster-angry-eyes,
+.enemy-fighter.wing-attacking .monster-angry-mouth{display:block;}
+
+.enemy-fighter.pained .monster-normal-eyes,
+.enemy-fighter.pained .monster-normal-mouth,
+.enemy-fighter.pained .monster-smug-eyes,
+.enemy-fighter.pained .monster-smug-mouth,
+.enemy-fighter.pained .monster-roar-eyes,
+.enemy-fighter.pained .monster-roar-mouth,
+.enemy-fighter.pained .monster-angry-eyes,
+.enemy-fighter.pained .monster-angry-mouth{display:none !important;}
+.enemy-fighter.pained .monster-pain-eyes,
+.enemy-fighter.pained .monster-pain-mouth{display:block !important;}
+
+.enemy-fighter.defeated .monster-normal-eyes,
+.enemy-fighter.defeated .monster-normal-mouth,
+.enemy-fighter.defeated .monster-smug-eyes,
+.enemy-fighter.defeated .monster-smug-mouth,
+.enemy-fighter.defeated .monster-roar-eyes,
+.enemy-fighter.defeated .monster-roar-mouth,
+.enemy-fighter.defeated .monster-angry-eyes,
+.enemy-fighter.defeated .monster-angry-mouth,
+.enemy-fighter.defeated .monster-pain-eyes,
+.enemy-fighter.defeated .monster-pain-mouth{display:none !important;}
+.enemy-fighter.defeated .monster-x-eyes{display:block !important;}
+
+/* ---------- Monster wings & horns ---------- */
+.monster-wings{display:none;transform-box:fill-box;transform-origin:center;translate:0 18px;scale:1.3;}
+.enemy-fighter.has-wings .monster-wings{
+  display:block;
+  animation:wingUnfurl .78s cubic-bezier(.14,.82,.24,1) both,wingFlap 3.1s 1s ease-in-out infinite;
+  filter:drop-shadow(0 0 12px rgba(247,100,53,.35));
+}
+.enemy-fighter.form-ultimate .monster-wings{
+  animation:wingUnfurl .78s cubic-bezier(.14,.82,.24,1) both,wingFlap 2.25s 1s ease-in-out infinite;
+  filter:drop-shadow(0 0 18px rgba(255,82,41,.52));
+}
+.monster-horns{display:none;transform-box:fill-box;transform-origin:center;}
+.enemy-fighter.has-horns .monster-horns{
+  display:block;
+  animation:hornGrow .7s cubic-bezier(.16,.84,.24,1) both,hornGlow 2.4s 1s ease-in-out infinite;
+  filter:drop-shadow(0 0 12px rgba(255,82,43,.5));
+}
+.enemy-fighter.form-ultimate .enemy-aura{
+  background:radial-gradient(circle,rgba(255,85,38,.48),rgba(158,37,25,.15) 47%,transparent 70%);
+  filter:blur(7px);
+}
+.enemy-fighter.form-ultimate .enemy-figure{
+  filter:drop-shadow(0 24px 25px rgba(0,0,0,.34)) drop-shadow(0 0 20px rgba(255,82,43,.32));
+}
+.enemy-fighter.form-ultimate.pained .enemy-figure{
+  filter:drop-shadow(0 24px 25px rgba(0,0,0,.3)) drop-shadow(0 0 26px rgba(255,100,49,.56)) brightness(1.12);
+}
+.enemy-fighter.has-wings .enemy-aura{animation-duration:2.5s;}
+.enemy-fighter.has-horns .enemy-aura{animation-duration:1.9s;}
+
+/* ---------- Monster attack body motions ---------- */
+.enemy-fighter.breathing-fire .enemy-figure{animation:monsterBreatheFire 1.05s cubic-bezier(.2,.82,.22,1);z-index:7;}
+.enemy-fighter.wing-attacking .enemy-figure{animation:monsterWingAttack 1.2s cubic-bezier(.2,.82,.22,1);z-index:8;}
+.enemy-fighter.roaring .enemy-figure{animation:monsterRoar 1.45s cubic-bezier(.2,.82,.22,1);z-index:8;}
+.enemy-fighter.wing-attacking .monster-wings{animation:wingFlap .32s ease-in-out infinite alternate;}
+.enemy-fighter.roaring .monster-wings{animation:wingFlap .38s ease-in-out infinite alternate;}
+
+/* ---------- Fire breath FX ---------- */
+.fx-fire-cone{
+  position:absolute;z-index:8;left:23%;top:35%;width:51%;height:30%;
+  clip-path:polygon(100% 43%,0 0,0 100%,100% 57%);
+  transform-origin:100% 50%;
+  background:
+    radial-gradient(ellipse at 100% 50%,rgba(255,255,236,.98),rgba(255,211,109,.96) 18%,rgba(247,118,47,.9) 48%,rgba(198,38,28,.55) 78%,transparent 100%);
+  filter:blur(1.5px) drop-shadow(0 0 24px rgba(255,93,44,.62));
+  opacity:0;
+  animation:fireCone .95s cubic-bezier(.16,.8,.2,1) both;
+}
+.fx-fire-cone::before{
+  content:"";position:absolute;inset:28% 5% 28% 0;
+  background:linear-gradient(90deg,rgba(255,250,224,.96),rgba(255,189,82,.72) 60%,transparent);
+  filter:blur(3px);
+}
+.fx-fire-mouth{
+  position:absolute;z-index:9;left:66%;top:47%;width:58px;height:58px;margin:-29px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,250,218,.95),rgba(255,159,63,.5) 38%,transparent 68%);
+  filter:blur(4px);opacity:0;animation:fireMouth .9s ease-out both;
+}
+.fx-fireball{
+  position:absolute;z-index:10;left:67%;top:var(--top,47%);width:var(--size,22px);height:var(--size,22px);
+  border-radius:50%;
+  background:radial-gradient(circle at 38% 32%,#fff9db 0 13%,#ffc35f 36%,#f05b34 70%,#a8261d 100%);
+  box-shadow:0 0 16px 6px rgba(255,105,45,.6);
+  opacity:0;
+  animation:fireballFly .82s var(--delay,0s) cubic-bezier(.18,.72,.25,1) forwards;
+}
+.fx-fireball::after{
+  content:"";position:absolute;left:80%;top:30%;width:45px;height:8px;border-radius:99px;
+  background:linear-gradient(90deg,#ffcf79,transparent);filter:blur(3px);
+}
+.fx-fire-ember{
+  position:absolute;z-index:9;left:var(--sx,65%);top:var(--sy,52%);width:6px;height:6px;
+  border-radius:50%;background:#ffd071;box-shadow:0 0 9px #ff8b43;opacity:0;
+  animation:fireEmber 1s var(--delay,0s) ease-out forwards;
+}
+.fx-scorch{
+  position:absolute;z-index:3;left:12%;bottom:18%;width:30%;height:70px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(255,92,40,.44),rgba(91,25,18,.25) 52%,transparent 72%);
+  filter:blur(8px);opacity:0;animation:scorchPulse 1.1s .3s ease-out both;
+}
+
+/* ---------- Wing attack FX ---------- */
+.fx-wing-gust{
+  position:absolute;z-index:8;left:18%;top:22%;width:60%;height:48%;
+  border-radius:50%;
+  background:radial-gradient(ellipse at 80% 50%,rgba(255,227,188,.3),rgba(239,113,70,.13) 38%,transparent 68%);
+  filter:blur(3px);opacity:0;animation:wingGust 1.05s ease-out both;
+}
+.fx-wing-slash{
+  position:absolute;z-index:9;left:18%;top:var(--top,34%);width:58%;height:var(--h,30%);
+  border-top:5px solid rgba(255,245,210,.92);
+  border-radius:50%;
+  transform:rotate(var(--rot,-12deg));
+  transform-origin:100% 50%;
+  filter:drop-shadow(0 0 14px rgba(255,185,112,.72)) drop-shadow(0 0 26px rgba(240,96,43,.3));
+  opacity:0;
+  animation:wingSlash .82s var(--delay,0s) cubic-bezier(.16,.8,.2,1) forwards;
+}
+.fx-wing-slash::before{
+  content:"";position:absolute;left:0;top:0;width:100%;height:100%;
+  border-top:2px solid rgba(255,250,214,.62);
+  border-radius:50%;
+  transform:translateY(14px) scale(.84);
+  opacity:.7;
+}
+.fx-wing-feather{
+  position:absolute;z-index:10;left:var(--sx,60%);top:var(--sy,40%);width:18px;height:8px;
+  border-radius:100% 0 100% 0;
+  background:linear-gradient(135deg,#ffefc2,#e58b58);
+  box-shadow:0 0 9px rgba(255,190,124,.5);
+  opacity:0;
+  animation:wingFeatherFly 1s var(--delay,0s) ease-out forwards;
+}
+.fx-wind-line{
+  position:absolute;z-index:8;left:20%;top:var(--top,45%);width:55%;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(255,242,206,.75),transparent);
+  opacity:0;animation:windLine .7s var(--delay,0s) ease-out forwards;
+}
+
+/* ---------- Meteor ultimate FX ---------- */
+.fx-meteor-shade{
+  position:absolute;z-index:4;inset:0;
+  background:
+    radial-gradient(circle at 28% 55%,rgba(255,110,46,.18),transparent 38%),
+    linear-gradient(180deg,rgba(43,4,4,.64),rgba(80,18,9,.2) 55%,rgba(16,2,2,.58));
+  opacity:0;animation:meteorShade 2s ease-out both;
+}
+.fx-meteor{
+  position:absolute;z-index:10;left:var(--sx,60%);top:-14%;width:var(--size,26px);height:var(--size,26px);
+  border-radius:50%;
+  background:radial-gradient(circle at 34% 30%,#fff9d8 0 10%,#ffc35f 26%,#f06a33 54%,#8d251b 100%);
+  box-shadow:0 0 20px 8px rgba(255,105,44,.58),0 0 40px 18px rgba(204,45,28,.28);
+  opacity:0;
+  animation:meteorFall var(--dur,1.05s) var(--delay,0s) cubic-bezier(.28,.02,.72,1) forwards;
+}
+.fx-meteor::before{
+  content:"";position:absolute;left:52%;top:65%;width:13px;height:170px;
+  transform:translateX(-50%) rotate(16deg);transform-origin:top center;
+  background:linear-gradient(180deg,rgba(255,239,175,.95),rgba(255,116,46,.82) 26%,rgba(139,35,24,.35) 70%,transparent);
+  border-radius:50%;filter:blur(2px);
+}
+.fx-meteor::after{
+  content:"";position:absolute;left:-12px;top:-12px;width:26px;height:26px;border-radius:50%;
+  border:1px solid rgba(255,231,167,.5);
+}
+.fx-meteor-burst{
+  position:absolute;z-index:11;left:27%;top:45%;width:240px;height:240px;margin:-120px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,254,231,.98),rgba(255,188,77,.84) 24%,rgba(243,85,38,.5) 48%,transparent 70%);
+  opacity:0;animation:meteorBurst .8s ease-out both;
+}
+.fx-lava{
+  position:absolute;z-index:6;left:var(--sx,22%);bottom:12%;width:var(--size,90px);height:18px;
+  border-radius:50%;
+  background:radial-gradient(ellipse,#ffd06c,#f06a34 38%,rgba(95,23,17,.3) 72%,transparent);
+  filter:blur(2px);opacity:0;animation:lavaPulse 1.2s var(--delay,0s) ease-out both;
+}
+.fx-roar-big{
+  position:absolute;z-index:12;left:65%;top:18%;color:#ffd09a;
+  font-family:var(--serif);font-size:44px;font-weight:900;letter-spacing:.08em;
+  text-shadow:0 0 20px rgba(255,93,46,.75),0 0 45px rgba(255,133,61,.4);
+  opacity:0;animation:roarBig 1.15s ease-out both;
+}
+
+/* ---------- New screen flashes ---------- */
+.flash-layer.flash-fireball{animation:flashFireball .7s ease-out;}
+.flash-layer.flash-wing{animation:flashWing .6s ease-out;}
+.flash-layer.flash-meteor{animation:flashMeteor 1.15s ease-out;}
+.flash-layer.flash-roar{animation:flashRoar .7s ease-out;}
+
+/* ---------- Animations ---------- */
+@keyframes wingUnfurl{
+  0%{opacity:0;transform:scale(.22) rotate(-8deg);}
+  45%{opacity:1;transform:scale(1.1) rotate(3deg);}
+  100%{opacity:1;transform:scale(1) rotate(0);}
+}
+@keyframes wingFlap{
+  0%{transform:scaleY(.9) rotate(-1.5deg);}
+  100%{transform:scaleY(1.06) rotate(1.5deg);}
+}
+@keyframes hornGrow{
+  0%{opacity:0;transform:scaleY(.2) scaleX(.7);}
+  60%{opacity:1;transform:scaleY(1.1) scaleX(1.03);}
+  100%{opacity:1;transform:scaleY(1) scaleX(1);}
+}
+@keyframes hornGlow{
+  0%,100%{filter:drop-shadow(0 0 8px rgba(255,83,43,.36));}
+  50%{filter:drop-shadow(0 0 18px rgba(255,119,53,.62));}
+}
+@keyframes monsterBreatheFire{
+  0%,100%{transform:translate(0,0) rotate(0) scale(1);}
+  18%{transform:translate(10px,-6px) rotate(4deg) scale(.98);}
+  38%{transform:translate(-8px,-2px) rotate(-4deg) scale(1.03);}
+  56%{transform:translate(-14px,4px) rotate(-1deg) scale(1.04);}
+  78%{transform:translate(4px,0) rotate(1deg) scale(1);}
+}
+@keyframes monsterWingAttack{
+  0%,100%{transform:translate(0,0) rotate(0) scale(1);}
+  15%{transform:translate(16px,-22px) rotate(5deg) scale(.98);}
+  38%{transform:translate(30px,-72px) rotate(-6deg) scale(1.06);}
+  58%{transform:translate(-24px,-52px) rotate(5deg) scale(1.04);}
+  78%{transform:translate(-10px,-12px) rotate(-2deg) scale(1);}
+}
+@keyframes monsterRoar{
+  0%,100%{transform:translate(0,0) rotate(0) scale(1);}
+  16%{transform:translate(6px,-9px) rotate(2deg) scale(1.02);}
+  34%{transform:translate(-4px,-16px) rotate(-3deg) scale(1.08);}
+  52%{transform:translate(4px,-11px) rotate(3deg) scale(1.06);}
+  72%{transform:translate(-2px,-4px) rotate(-1deg) scale(1.01);}
+}
+@keyframes fireCone{
+  0%{opacity:0;transform:scaleX(.2) scaleY(.5);}
+  18%{opacity:1;}
+  48%{opacity:1;transform:scaleX(1.04) scaleY(1);}
+  78%{opacity:.84;transform:scaleX(1.02) scaleY(1.03);}
+  100%{opacity:0;transform:scaleX(1.08) scaleY(1.08);}
+}
+@keyframes fireMouth{
+  0%{opacity:0;transform:scale(.4);}
+  22%{opacity:1;transform:scale(1.1);}
+  100%{opacity:0;transform:scale(1.5);}
+}
+@keyframes fireballFly{
+  0%{left:67%;opacity:0;transform:scale(.35) rotate(0);}
+  16%{opacity:1;}
+  72%{opacity:1;}
+  100%{left:23%;top:calc(var(--top,47%) + 5%);opacity:0;transform:scale(1.2) rotate(-40deg);}
+}
+@keyframes fireEmber{
+  0%{opacity:0;transform:translate(0,0) scale(.4);}
+  18%{opacity:1;}
+  100%{opacity:0;transform:translate(var(--dx,-160px),var(--dy,-60px)) scale(.2);}
+}
+@keyframes scorchPulse{
+  0%{opacity:0;transform:scale(.6);}
+  35%{opacity:1;}
+  100%{opacity:.35;transform:scale(1.15);}
+}
+@keyframes wingGust{
+  0%{opacity:0;transform:scale(.7) rotate(-8deg);}
+  28%{opacity:1;}
+  100%{opacity:0;transform:scale(1.25) rotate(6deg);}
+}
+@keyframes wingSlash{
+  0%{opacity:0;transform:translateX(80px) rotate(var(--rot,-12deg)) scaleX(.35);}
+  22%{opacity:1;}
+  100%{opacity:0;transform:translateX(-300px) rotate(var(--rot,-12deg)) scaleX(1.25);}
+}
+@keyframes wingFeatherFly{
+  0%{opacity:0;transform:translate(0,0) rotate(0) scale(.6);}
+  18%{opacity:1;}
+  100%{opacity:0;transform:translate(var(--dx,-170px),var(--dy,70px)) rotate(var(--rot,180deg)) scale(.9);}
+}
+@keyframes windLine{
+  0%{opacity:0;transform:translateX(120px) scaleX(.3);}
+  22%{opacity:1;}
+  100%{opacity:0;transform:translateX(-260px) scaleX(1.2);}
+}
+@keyframes meteorShade{
+  0%{opacity:0;}
+  18%{opacity:1;}
+  70%{opacity:.7;}
+  100%{opacity:0;}
+}
+@keyframes meteorFall{
+  0%{opacity:0;transform:translate(0,0) rotate(0) scale(.3);}
+  12%{opacity:1;}
+  82%{opacity:1;}
+  100%{left:var(--ex,27%);top:var(--ey,45%);opacity:0;transform:rotate(24deg) scale(1.1);}
+}
+@keyframes meteorBurst{
+  0%{opacity:0;transform:scale(.2);}
+  20%{opacity:1;transform:scale(1.05);}
+  100%{opacity:0;transform:scale(1.65);}
+}
+@keyframes lavaPulse{
+  0%{opacity:0;transform:scale(.5);}
+  30%{opacity:.95;transform:scale(1.1);}
+  100%{opacity:.2;transform:scale(1.35);}
+}
+@keyframes roarBig{
+  0%{opacity:0;transform:translateY(12px) scale(.6);}
+  18%{opacity:1;transform:translateY(0) scale(1.12);}
+  62%{opacity:1;transform:translateY(-4px) scale(1);}
+  100%{opacity:0;transform:translateY(-26px) scale(.9);}
+}
+@keyframes flashFireball{
+  0%{opacity:0;background:radial-gradient(circle at 25% 48%,rgba(255,207,102,.48),transparent 60%);}
+  30%{opacity:1;}
+  100%{opacity:0;}
+}
+@keyframes flashWing{
+  0%{opacity:0;background:linear-gradient(90deg,rgba(255,213,166,.08),rgba(255,126,71,.32),transparent 65%);}
+  32%{opacity:1;}
+  100%{opacity:0;}
+}
+@keyframes flashMeteor{
+  0%{opacity:0;background:radial-gradient(circle at 25% 50%,rgba(255,156,71,.52),rgba(130,32,20,.2) 35%,transparent 68%);}
+  24%{opacity:1;}
+  62%{opacity:.75;}
+  100%{opacity:0;}
+}
+@keyframes flashRoar{
+  0%{opacity:0;background:radial-gradient(circle at 72% 38%,rgba(255,126,66,.42),transparent 55%);}
+  28%{opacity:1;}
+  100%{opacity:0;}
+}
+
+@media (max-width:760px){
+  .evolution-hint{font-size:8px;line-height:1.6;padding:8px 9px;text-align:left;}
+  .evolution-hint span{font-size:6.5px;margin-right:4px;}
+  .fx-fire-cone{left:20%;width:57%;height:28%;}
+  .fx-fireball{width:16px;height:16px;}
+  .fx-meteor{width:18px;height:18px;}
+  .fx-meteor-burst{width:170px;height:170px;margin:-85px;}
+  .fx-roar-big{font-size:32px;left:64%;}
+  .fx-wing-slash{width:64%;}
+  .monster-wings{transform-origin:center;}
+}
+
 </style>
 </head>
 <body>
@@ -1575,7 +1982,7 @@ html{overflow-x:hidden;}
     </span>
   </a>
   <div class="top-actions">
-    <span class="mode-chip">赤焰试炼 · 10题</span>
+    <span class="mode-chip">赤焰试炼 · 击破为止</span>
     <button class="icon-btn share-btn" id="shareBtn" type="button" aria-label="分享游戏链接">
       <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="18" cy="5" r="2.6"/>
@@ -1602,16 +2009,16 @@ html{overflow-x:hidden;}
   <section class="screen select-screen" id="selectScreen">
     <div class="title-row">
       <div class="title-copy">
-        <p class="eyebrow"><span class="eyebrow-line"></span>达斡尔族文化 · 赤焰十题试炼</p>
+        <p class="eyebrow"><span class="eyebrow-line"></span>达斡尔族文化 · 赤焰试炼</p>
         <h1 class="main-title">
           <span class="title-top">达斡尔族</span>
           知识<span class="title-hot">大乱斗</span>
         </h1>
-        <p class="main-sub">雾团兽卷起赤焰，偷走了草原的「知识之火」。选一位英雄，从专属题库中随机抽 10 题，用知识把它击退。</p>
+        <p class="main-sub">雾团兽卷起赤焰，偷走了草原的「知识之火」。选一位英雄，从专属题库随机抽题，直到把雾团兽彻底击破。连续答错会激怒它：喷火、长翼，最终召唤岩浆陨石。</p>
       </div>
       <div class="title-metrics" aria-label="游戏规模">
         <div class="metric"><b>100</b><span>文化题库</span></div>
-        <div class="metric"><b>10</b><span>每局随机</span></div>
+        <div class="metric"><b>10</b><span>一组抽题</span></div>
         <div class="metric"><b>5</b><span>可玩英雄</span></div>
       </div>
     </div>
@@ -1659,7 +2066,7 @@ html{overflow-x:hidden;}
 
         <div class="pool-line">
           <span class="pool-icon">✦</span>
-          <span>专属题库 20 道 · 每局随机抽取 10 道</span>
+          <span>专属题库 20 道 · 每 10 题一组随机抽取</span>
         </div>
 
         <div class="detail-quote">
@@ -1671,15 +2078,16 @@ html{overflow-x:hidden;}
           <p class="selected-hint" id="selectedHint">已选择 <b>莫日根</b> · 赤霞长袍</p>
           <button class="start-btn" id="startBtn" type="button"><span>踏入赤焰战场</span><span class="start-arrow" aria-hidden="true">→</span></button>
         </div>
-        <p class="detail-note">答对攻击 · 答错被兽爪反击 · HP 归零或十题结束定胜负</p>
+        <p class="detail-note">答对攻击 · 答错激怒怪兽 · 击破怪兽才算胜利</p>
       </aside>
     </div>
 
     <div class="rule-bar" aria-label="战斗规则">
       <span><i class="rule-mark ok">✓</i><b>答对</b> 英雄发动专属攻击</span>
-      <span><i class="rule-mark bad">×</i><b>答错</b> 雾团兽突进爪击</span>
-      <span><i class="rule-mark hp">♥</i><b>胜负</b> HP 归零，或十题后比剩余生命</span>
+      <span><i class="rule-mark bad">×</i><b>答错</b> 雾团兽反击并累积进化</span>
+      <span><i class="rule-mark hp">♥</i><b>胜负</b> 击破雾团兽才算胜利</span>
     </div>
+    <p class="evolution-hint"><span>怪兽进化</span> 连续答错 2 次 · 喷火　/　3 次 · 长出翅膀 · 翼击　/　4 次 · 终极形态 · 陨石天罚</p>
 
     <footer class="site-foot">
       达斡尔族文化互动知识游戏 · 题目取材于传统体育、节庆、服饰、歌舞与聚居地文化。
@@ -1692,7 +2100,7 @@ html{overflow-x:hidden;}
       <div class="battle-status">
         <span class="live-dot" aria-hidden="true"></span>
         <span class="battle-status-text">赤焰对决中</span>
-        <div class="round-pips" id="roundPips" aria-label="答题进度"></div>
+        <div class="round-pips" id="roundPips" aria-label="最近答题记录"></div>
       </div>
       <div class="battle-actions">
         <span class="score-chip">答对 <b id="correctValue">0</b></span>
@@ -1738,7 +2146,6 @@ html{overflow-x:hidden;}
             <div class="round-seal" aria-label="当前回合">
               <span>ROUND</span>
               <b id="roundNumber">1</b>
-              <i>/ 10</i>
             </div>
 
             <div class="hp-card enemy-hp" id="enemyHpCard">
@@ -1746,7 +2153,7 @@ html{overflow-x:hidden;}
                 <span class="side-label">雾团兽</span>
                 <span class="hp-value"><b id="enemyHpText">160</b><span> / <i id="enemyHpMax">160</i></span></span>
               </div>
-              <h2><span>阿雾</span><small>赤焰掠夺者</small></h2>
+              <h2><span>阿雾</span><small id="enemyTitleSmall">赤焰掠夺者</small></h2>
               <div class="hp-track" id="enemyHpTrack" role="progressbar" aria-label="雾团兽生命值" aria-valuemin="0" aria-valuemax="160" aria-valuenow="160">
                 <span class="hp-ghost" id="enemyHpGhost"></span>
                 <span class="hp-fill" id="enemyHpFill"></span>
@@ -1776,7 +2183,7 @@ html{overflow-x:hidden;}
             <div class="fighter enemy-fighter" id="enemyFighter">
               <div class="enemy-aura" aria-hidden="true"></div>
               <div class="fighter-art" id="enemyArt"></div>
-              <div class="fighter-tag"><span></span>赤焰掠夺者</div>
+              <div class="fighter-tag"><span></span><b id="enemyTagText">赤焰掠夺者</b></div>
             </div>
 
             <div class="trait-callout" id="traitCallout" aria-live="polite">
@@ -1793,7 +2200,7 @@ html{overflow-x:hidden;}
 
         <section class="quiz-card" id="quizCard" aria-labelledby="questionText">
           <div class="quiz-top">
-            <div class="q-index"><span>QUESTION</span><strong id="questionNumber">01</strong><em>/ 10</em></div>
+            <div class="q-index"><span>QUESTION</span><strong id="questionNumber">01</strong></div>
             <div class="quiz-meta">
               <span class="category-pill" id="categoryPill">传统体育</span>
               <span class="attack-pill" id="attackPill">答对 · 攻击 <b>24</b></span>
@@ -1819,7 +2226,7 @@ html{overflow-x:hidden;}
           </div>
 
           <div class="quiz-foot" id="quizFoot">
-            <span>每局 10 题 · 题目从当前英雄的专属题库随机抽取</span>
+            <span>随机抽题 · 每 10 题一组，直到击破雾团兽</span>
             <span>答错也会显示正确解析</span>
           </div>
         </section>
@@ -1834,7 +2241,7 @@ html{overflow-x:hidden;}
           <span class="live-pill"><i></i>实时</span>
         </div>
         <div class="log-list" id="logList" aria-live="polite" aria-label="战斗记录"></div>
-        <div class="log-foot">十题之内，用知识熄灭这场赤焰。</div>
+        <div class="log-foot">击破雾团兽，才能熄灭这场赤焰。</div>
       </aside>
     </div>
   </section>
@@ -2217,6 +2624,144 @@ const HERO_LOOKS = {
   bekou: { skin: "#e7b98c", hair: "#28231f", eye: "#2c362f", brow: "#4d382b" }
 };
 
+
+function heroFaceGroups(heroId, look) {
+  const commonNose = '<path d="M148 108 Q151 115 145 116" fill="none" stroke="#a96650" stroke-width="1.8" stroke-linecap="round"/>';
+  const blush = '<ellipse cx="118" cy="118" rx="8" ry="4" fill="#df9485" opacity=".38"/><ellipse cx="182" cy="118" rx="8" ry="4" fill="#df9485" opacity=".38"/>';
+  const sweat = '<path d="M184 91 C177 101 180 108 186 108 C191 108 193 101 187 91Z" fill="#9bdce0" stroke="#2c4949" stroke-width="1.2" opacity=".9"/>';
+  const tears = '<path d="M103 137 C96 149 99 158 106 158 C111 158 113 149 107 137Z" fill="#9bdce0" stroke="#2c4949" stroke-width="1.2" opacity=".85"/><path d="M217 137 C224 149 221 158 214 158 C209 158 207 149 213 137Z" fill="#9bdce0" stroke="#2c4949" stroke-width="1.2" opacity=".85"/>';
+
+  const normal = {
+    morigen: `
+      <path d="M121 107 Q130 99 140 106 Q131 114 121 107Z" fill="#f7ead4" stroke="#8d6a50" stroke-width=".9"/>
+      <path d="M160 106 Q170 99 179 107 Q169 114 160 106Z" fill="#f7ead4" stroke="#8d6a50" stroke-width=".9"/>
+      <ellipse cx="131" cy="106" rx="4.1" ry="5.2" fill="${look.eye}"/>
+      <ellipse cx="169" cy="106" rx="4.1" ry="5.2" fill="${look.eye}"/>
+      <circle cx="132.5" cy="103.5" r="1.9" fill="#fff" opacity=".95"/>
+      <circle cx="170.5" cy="103.5" r="1.9" fill="#fff" opacity=".95"/>
+      <circle cx="128" cy="109" r="1" fill="#fff" opacity=".65"/>
+      <circle cx="166" cy="109" r="1" fill="#fff" opacity=".65"/>
+      <path d="M121 93 L140 96 M160 96 L179 92" fill="none" stroke="${look.brow}" stroke-width="2.4" stroke-linecap="round"/>
+      ${commonNose}
+      <path d="M138 120 Q150 127 162 119" fill="none" stroke="#704236" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M162 119 Q166 117 167 113" fill="none" stroke="#8d5c49" stroke-width="1.3" stroke-linecap="round"/>
+      <path d="M179 109 l5 7" fill="none" stroke="#a96b55" stroke-width="1.5" stroke-linecap="round" opacity=".75"/>
+      ${blush}
+    `,
+    tana: `
+      <ellipse cx="131" cy="106" rx="7.4" ry="8.9" fill="${look.eye}"/>
+      <ellipse cx="169" cy="106" rx="7.4" ry="8.9" fill="${look.eye}"/>
+      <circle cx="134" cy="102" r="2.8" fill="#fff" opacity=".96"/>
+      <circle cx="172" cy="102" r="2.8" fill="#fff" opacity=".96"/>
+      <circle cx="128" cy="110" r="1.2" fill="#fff" opacity=".72"/>
+      <circle cx="166" cy="110" r="1.2" fill="#fff" opacity=".72"/>
+      <path d="M121 93 Q131 87 141 92 M159 92 Q169 87 179 93" fill="none" stroke="${look.brow}" stroke-width="2" stroke-linecap="round"/>
+      ${commonNose}
+      <path d="M136 119 Q150 131 164 119" fill="none" stroke="#704236" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M134 120 q-3 3 -6 2 M166 120 q3 3 6 2" fill="none" stroke="#a86654" stroke-width="1.3" stroke-linecap="round" opacity=".7"/>
+      <g fill="#b86e54" opacity=".58">
+        <circle cx="121" cy="113" r=".9"/><circle cx="126" cy="116" r=".75"/><circle cx="178" cy="113" r=".9"/><circle cx="173" cy="116" r=".75"/>
+      </g>
+      ${blush}
+    `,
+    kumule: `
+      <ellipse cx="131" cy="106" rx="7" ry="8.2" fill="#f7ead4" stroke="#8d6a50" stroke-width=".9"/>
+      <ellipse cx="169" cy="106" rx="7" ry="8.2" fill="#f7ead4" stroke="#8d6a50" stroke-width=".9"/>
+      <ellipse cx="131" cy="106" rx="4.9" ry="6" fill="${look.eye}"/>
+      <ellipse cx="169" cy="106" rx="4.9" ry="6" fill="${look.eye}"/>
+      <circle cx="133" cy="103" r="1.9" fill="#fff" opacity=".92"/>
+      <circle cx="171" cy="103" r="1.9" fill="#fff" opacity=".92"/>
+      <path d="M123 112 Q131 116 139 112 M161 112 Q169 116 177 112" fill="none" stroke="#4e5a4f" stroke-width="1.2" opacity=".45"/>
+      <path d="M122 93 Q131 89 140 93 M160 93 Q169 89 178 93" fill="none" stroke="${look.brow}" stroke-width="1.9" stroke-linecap="round"/>
+      ${commonNose}
+      <path d="M141 121 Q150 127 159 121" fill="none" stroke="#704236" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M179 112 C186 107 191 110 191 116 C187 120 182 120 178 116Z" fill="#7aaa7d" stroke="#466b4b" stroke-width="1.1" opacity=".9"/>
+      <path d="M183 114 Q187 111 189 113" fill="none" stroke="#b9dfae" stroke-width="1.1" stroke-linecap="round" opacity=".8"/>
+      ${blush}
+    `,
+    uqun: `
+      <path d="M121 106 Q131 101 141 106 Q131 112 121 106Z" fill="#f7ead4" stroke="#8d6a50" stroke-width=".9"/>
+      <path d="M159 106 Q169 101 179 106 Q169 112 159 106Z" fill="#f7ead4" stroke="#8d6a50" stroke-width=".9"/>
+      <ellipse cx="131.5" cy="106" rx="3.5" ry="4.1" fill="${look.eye}"/>
+      <ellipse cx="168.5" cy="106" rx="3.5" ry="4.1" fill="${look.eye}"/>
+      <circle cx="131.5" cy="106" r="1.8" fill="#c78b43"/>
+      <circle cx="168.5" cy="106" r="1.8" fill="#c78b43"/>
+      <circle cx="132.5" cy="104.5" r=".8" fill="#fff8dc" opacity=".9"/>
+      <circle cx="169.5" cy="104.5" r=".8" fill="#fff8dc" opacity=".9"/>
+      <path d="M122 93 Q132 90 141 94 M159 94 Q169 89 179 92" fill="none" stroke="${look.brow}" stroke-width="2.1" stroke-linecap="round"/>
+      ${commonNose}
+      <path d="M139 120 Q151 128 162 118" fill="none" stroke="#704236" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M162 118 q6 0 7 -5" fill="none" stroke="#8d5c49" stroke-width="1.3" stroke-linecap="round"/>
+      <path d="M177 113 q4 -6 7 0 q-3 5 -7 4Z" fill="#e98e4f" stroke="#8d4c2b" stroke-width="1" opacity=".86"/>
+      ${blush}
+    `,
+    bekou: `
+      <path d="M121 106 Q131 101 141 108 Q131 113 121 106Z" fill="#f7ead4" stroke="#8d6a50" stroke-width=".9"/>
+      <path d="M159 108 Q169 101 179 106 Q169 113 159 108Z" fill="#f7ead4" stroke="#8d6a50" stroke-width=".9"/>
+      <ellipse cx="131.5" cy="106" rx="3.8" ry="4.3" fill="${look.eye}"/>
+      <ellipse cx="168.5" cy="106" rx="3.8" ry="4.3" fill="${look.eye}"/>
+      <circle cx="132.5" cy="104.5" r="1.3" fill="#fff" opacity=".9"/>
+      <circle cx="169.5" cy="104.5" r="1.3" fill="#fff" opacity=".9"/>
+      <path d="M120 93 Q132 96 142 99 M158 99 Q168 96 180 93" fill="none" stroke="${look.brow}" stroke-width="3" stroke-linecap="round"/>
+      ${commonNose}
+      <path d="M136 120 Q150 132 164 120 Q150 126 136 120Z" fill="#6c3b32" stroke="#5a3029" stroke-width="1.6"/>
+      <path d="M139 121 H161" stroke="#fff5dc" stroke-width="2.1" stroke-linecap="round" opacity=".9"/>
+      <path d="M119 111 L126 121" fill="none" stroke="#a96b55" stroke-width="1.8" stroke-linecap="round" opacity=".9"/>
+      <path d="M133 128 Q150 135 167 128" fill="none" stroke="#b57b5e" stroke-width="1.3" opacity=".45"/>
+      ${blush}
+    `
+  };
+
+  const hurtCommon = `
+    <path d="M120 107 Q131 100 142 107" fill="none" stroke="${look.eye}" stroke-width="3.6" stroke-linecap="round"/>
+    <path d="M158 107 Q169 100 180 107" fill="none" stroke="${look.eye}" stroke-width="3.6" stroke-linecap="round"/>
+    <path d="M119 94 Q130 87 142 94 M158 94 Q170 87 181 94" fill="none" stroke="${look.brow}" stroke-width="2.2" stroke-linecap="round"/>
+    ${commonNose}
+    <ellipse cx="150" cy="123" rx="9" ry="7" fill="#5f3131" stroke="#4c2925" stroke-width="1.7"/>
+    <ellipse cx="150" cy="127" rx="5" ry="3" fill="#d46e63" opacity=".8"/>
+  `;
+
+  const hurt = {
+    morigen: `
+      ${hurtCommon}
+      <path d="M139 121 H161 M143 121 l3 5 M151 121 l3 5 M159 121 l1 4" stroke="#f4dcb4" stroke-width="1.8" stroke-linecap="round" opacity=".9"/>
+      ${sweat}
+      <path d="M179 109 l5 7" fill="none" stroke="#a96b55" stroke-width="1.5" opacity=".75"/>
+    `,
+    tana: `
+      ${hurtCommon}
+      ${tears}
+      <path d="M137 120 Q150 133 163 120" fill="none" stroke="#8d5c49" stroke-width="1.4" stroke-linecap="round" opacity=".7"/>
+      <g fill="#b86e54" opacity=".5"><circle cx="121" cy="113" r=".9"/><circle cx="126" cy="116" r=".7"/><circle cx="178" cy="113" r=".9"/><circle cx="173" cy="116" r=".7"/></g>
+    `,
+    kumule: `
+      <path d="M120 109 Q131 103 142 109 M158 109 Q169 103 180 109" fill="none" stroke="${look.eye}" stroke-width="3.2" stroke-linecap="round"/>
+      <path d="M120 95 Q131 89 142 95 M158 95 Q169 89 180 95" fill="none" stroke="${look.brow}" stroke-width="2" stroke-linecap="round"/>
+      ${commonNose}
+      <ellipse cx="150" cy="123" rx="7" ry="6" fill="#5f3131" stroke="#4c2925" stroke-width="1.5"/>
+      <path d="M179 112 C186 107 191 110 191 116 C187 120 182 120 178 116Z" fill="#7aaa7d" stroke="#466b4b" stroke-width="1.1" opacity=".9"/>
+      ${sweat}
+    `,
+    uqun: `
+      <path d="M120 106 Q131 100 142 108 Q131 112 120 106Z" fill="${look.eye}"/>
+      <path d="M158 108 Q169 100 180 106 Q169 112 158 108Z" fill="${look.eye}"/>
+      <path d="M122 94 Q132 90 142 96 M158 96 Q168 90 179 94" fill="none" stroke="${look.brow}" stroke-width="2.2" stroke-linecap="round"/>
+      ${commonNose}
+      <path d="M139 121 Q150 128 161 121 Q150 125 139 121Z" fill="#5f3131" stroke="#4c2925" stroke-width="1.5"/>
+      <path d="M142 122 H159" stroke="#f4dcb4" stroke-width="1.8" stroke-linecap="round" opacity=".9"/>
+      <path d="M177 113 q4 -6 7 0 q-3 5 -7 4Z" fill="#e98e4f" stroke="#8d4c2b" stroke-width="1" opacity=".86"/>
+    `,
+    bekou: `
+      ${hurtCommon}
+      <path d="M140 121 H160 M144 121 l3 5 M152 121 l3 5" stroke="#f4dcb4" stroke-width="1.8" stroke-linecap="round" opacity=".9"/>
+      <path d="M119 111 L126 121" fill="none" stroke="#a96b55" stroke-width="1.8" stroke-linecap="round" opacity=".9"/>
+      ${sweat}
+    `
+  };
+
+  return `<g class="hero-face hero-face--normal">${normal[heroId] || normal.morigen}</g><g class="hero-face hero-face--hurt">${hurt[heroId] || hurt.morigen}</g>`;
+}
+
 function heroSVG(hero, outfit, artUid) {
   const c = outfit;
   const look = HERO_LOOKS[hero.id];
@@ -2436,22 +2981,7 @@ function heroSVG(hero, outfit, artUid) {
       <path d="M108 86 C104 99 105 111 111 119 C113 104 116 95 121 87Z" fill="${look.hair}"/>
       <path d="M192 86 C196 99 195 111 189 119 C187 104 184 95 179 87Z" fill="${look.hair}"/>
       ${headwear}
-      <g class="face">
-        <ellipse cx="131" cy="106" rx="6.6" ry="8.4" fill="${look.eye}"/>
-        <ellipse cx="169" cy="106" rx="6.6" ry="8.4" fill="${look.eye}"/>
-        <circle cx="133" cy="102.5" r="2.2" fill="#fff" opacity=".95"/>
-        <circle cx="171" cy="102.5" r="2.2" fill="#fff" opacity=".95"/>
-        <circle cx="129" cy="109" r="1" fill="#fff" opacity=".65"/>
-        <circle cx="167" cy="109" r="1" fill="#fff" opacity=".65"/>
-        <path d="M123 93 Q131 88 139 93 M161 93 Q169 88 177 93" fill="none" stroke="${look.brow}" stroke-width="2" stroke-linecap="round"/>
-        <path d="M148 108 Q151 115 145 116" fill="none" stroke="#a96650" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M138 120 Q150 128 162 120" fill="none" stroke="#704236" stroke-width="2.3" stroke-linecap="round"/>
-        <path d="M138 120 Q145 124 150 121" fill="#fff8e8" opacity=".8"/>
-        <ellipse cx="118" cy="118" rx="8" ry="4" fill="#df9485" opacity=".38"/>
-        <ellipse cx="182" cy="118" rx="8" ry="4" fill="#df9485" opacity=".38"/>
-        ${hero.id === "tana" ? `<g fill="#c47a5e" opacity=".45"><circle cx="122" cy="113" r=".8"/><circle cx="127" cy="116" r=".7"/><circle cx="177" cy="114" r=".8"/><circle cx="172" cy="117" r=".7"/></g>` : ""}
-        ${hero.id === "uqun" ? `<path d="M183 115 q5 3 4 7" fill="none" stroke="#9a654e" stroke-width="1.4" opacity=".5"/>` : ""}
-      </g>
+      ${heroFaceGroups(hero.id, look)}
       ${weapon}
     </svg>`;
 }
@@ -2460,6 +2990,7 @@ function monsterSVG(artUid) {
   const bodyId = nextArtId(`mbody-${artUid}`);
   const bellyId = nextArtId(`mbelly-${artUid}`);
   const glowId = nextArtId(`mglow-${artUid}`);
+  const wingId = nextArtId(`mwing-${artUid}`);
   return `
     <svg class="monster-svg" viewBox="0 0 320 320" role="img" aria-label="雾团兽阿雾，一只冒着赤焰的绒兽">
       <defs>
@@ -2476,9 +3007,30 @@ function monsterSVG(artUid) {
           <stop offset="0" stop-color="#f46b3e" stop-opacity=".28"/>
           <stop offset="1" stop-color="#f46b3e" stop-opacity="0"/>
         </radialGradient>
+        <linearGradient id="${wingId}" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#6c2d36"/>
+          <stop offset=".55" stop-color="#451f2a"/>
+          <stop offset="1" stop-color="#27141b"/>
+        </linearGradient>
       </defs>
       <circle cx="160" cy="162" r="146" fill="url(#${glowId})"/>
       <ellipse cx="160" cy="292" rx="94" ry="14" fill="#070202" opacity=".38"/>
+      <g class="monster-wings">
+        <g>
+          <path d="M82 207 C58 196 30 166 0 124 C-18 94 -28 64 -22 32 C4 40 30 58 52 82 C42 58 48 32 66 12 C80 46 88 82 92 118 C98 90 108 68 122 50 C118 92 110 146 100 198Z" fill="url(#${wingId})" stroke="#2a1416" stroke-width="3.2" stroke-linejoin="round"/>
+          <path d="M-4 123 C26 136 56 158 84 182 M66 13 C78 48 86 80 91 116 M121 51 C112 92 107 144 100 193" fill="none" stroke="#c48364" stroke-width="2.3" stroke-linecap="round" opacity=".66"/>
+          <path d="M18 122 C42 138 64 158 82 180 M54 52 C66 80 76 110 86 144 M106 74 C102 112 98 150 96 182" fill="none" stroke="#e7ad81" stroke-width="1.2" opacity=".4"/>
+          <path d="M-4 123 L-18 111 L-14 130 L-29 138 L-12 140" fill="#e6a26f" stroke="#2a1416" stroke-width="1.4" opacity=".8"/>
+          <path d="M66 13 L60 2" stroke="#ffd18d" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+        </g>
+        <g transform="translate(320 0) scale(-1 1)">
+          <path d="M82 207 C58 196 30 166 0 124 C-18 94 -28 64 -22 32 C4 40 30 58 52 82 C42 58 48 32 66 12 C80 46 88 82 92 118 C98 90 108 68 122 50 C118 92 110 146 100 198Z" fill="url(#${wingId})" stroke="#2a1416" stroke-width="3.2" stroke-linejoin="round"/>
+          <path d="M-4 123 C26 136 56 158 84 182 M66 13 C78 48 86 80 91 116 M121 51 C112 92 107 144 100 193" fill="none" stroke="#c48364" stroke-width="2.3" stroke-linecap="round" opacity=".66"/>
+          <path d="M18 122 C42 138 64 158 82 180 M54 52 C66 80 76 110 86 144 M106 74 C102 112 98 150 96 182" fill="none" stroke="#e7ad81" stroke-width="1.2" opacity=".4"/>
+          <path d="M-4 123 L-18 111 L-14 130 L-29 138 L-12 140" fill="#e6a26f" stroke="#2a1416" stroke-width="1.4" opacity=".8"/>
+          <path d="M66 13 L60 2" stroke="#ffd18d" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+        </g>
+      </g>
       <path d="M243 226 C278 204 306 221 294 245 C284 266 260 262 257 245 C255 235 268 231 275 238" fill="none" stroke="#6f5252" stroke-width="18" stroke-linecap="round" opacity=".9"/>
       <g class="monster-flame" opacity=".9">
         <path d="M262 221 C255 199 267 184 278 192 C274 202 280 211 286 220 C275 219 268 223 262 231Z" fill="#ef6b3e" stroke="#391611" stroke-width="2"/>
@@ -2501,6 +3053,12 @@ function monsterSVG(artUid) {
       </g>
       <ellipse cx="160" cy="199" rx="72" ry="61" fill="url(#${bellyId})" opacity=".96"/>
       <ellipse cx="160" cy="199" rx="72" ry="61" fill="none" stroke="#d5c09c" stroke-width="1.5" opacity=".55"/>
+      <g class="monster-horns">
+        <path d="M111 76 C95 50 89 24 100 7 C110 31 122 52 134 68Z" fill="#4d1d1f" stroke="#281114" stroke-width="2.8"/>
+        <path d="M209 76 C225 50 231 24 220 7 C210 31 198 52 186 68Z" fill="#4d1d1f" stroke="#281114" stroke-width="2.8"/>
+        <path d="M103 34 C108 47 114 59 122 69 M217 34 C212 47 206 59 198 69" fill="none" stroke="#ff9a51" stroke-width="1.5" opacity=".55"/>
+        <path d="M100 8 C96 3 98 0 103 2 M220 8 C224 3 222 0 217 2" fill="none" stroke="#ffd083" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+      </g>
       <g class="monster-normal-eyes">
         <ellipse cx="127" cy="152" rx="21" ry="24" fill="#231d1c"/>
         <ellipse cx="193" cy="152" rx="21" ry="24" fill="#231d1c"/>
@@ -2519,6 +3077,29 @@ function monsterSVG(artUid) {
       <g class="monster-x-eyes">
         <path d="M112 141 l22 22 M134 141 l-22 22 M186 141 l22 22 M208 141 l-22 22" fill="none" stroke="#2d2321" stroke-width="4.5" stroke-linecap="round"/>
       </g>
+      <g class="monster-smug-eyes">
+        <path d="M107 147 Q127 138 147 147 M173 147 Q193 138 213 147" fill="none" stroke="#241d1c" stroke-width="7" stroke-linecap="round"/>
+        <path d="M114 152 Q127 159 140 152 M180 152 Q193 159 206 152" fill="none" stroke="#46322e" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+        <circle cx="127" cy="151" r="5.5" fill="#df9e4d"/>
+        <circle cx="193" cy="151" r="5.5" fill="#df9e4d"/>
+        <circle cx="129" cy="149" r="1.8" fill="#fff8d8"/>
+        <circle cx="195" cy="149" r="1.8" fill="#fff8d8"/>
+        <path d="M108 128 Q127 121 146 130 M174 130 Q193 121 212 128" fill="none" stroke="#6d4f4a" stroke-width="2.4" stroke-linecap="round" opacity=".8"/>
+      </g>
+      <g class="monster-roar-eyes">
+        <path d="M104 148 L145 156 L142 136Z" fill="#241d1c"/>
+        <path d="M216 148 L175 156 L178 136Z" fill="#241d1c"/>
+        <path d="M113 147 L141 152 M207 147 L179 152" stroke="#ffb35e" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="127" cy="151" r="4" fill="#ffd278"/>
+        <circle cx="193" cy="151" r="4" fill="#ffd278"/>
+        <path d="M107 128 L143 137 M213 128 L177 137" stroke="#6d4f4a" stroke-width="3.2" stroke-linecap="round" opacity=".85"/>
+      </g>
+      <g class="monster-angry-eyes">
+        <path d="M109 147 Q127 139 145 148 Q127 155 109 147Z" fill="#241d1c"/>
+        <path d="M175 148 Q193 139 211 147 Q193 155 175 148Z" fill="#241d1c"/>
+        <path d="M123 148 L136 151 M177 151 L190 148" stroke="#ffb35e" stroke-width="3" stroke-linecap="round"/>
+        <path d="M109 128 L143 135 M211 128 L177 135" stroke="#6d4f4a" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+      </g>
       <g class="monster-normal-mouth">
         <ellipse cx="102" cy="189" rx="16" ry="8.5" fill="#d88277" opacity=".55"/>
         <ellipse cx="218" cy="189" rx="16" ry="8.5" fill="#d88277" opacity=".55"/>
@@ -2531,6 +3112,24 @@ function monsterSVG(artUid) {
         <ellipse cx="160" cy="196" rx="9" ry="6" fill="#d86f6b" opacity=".8"/>
         <path d="M144 184 Q152 190 160 190 Q168 190 176 184" fill="none" stroke="#f0d3a0" stroke-width="2" stroke-linecap="round" opacity=".7"/>
         <path d="M148 179 l4 6 M172 179 l-4 6" stroke="#3b2422" stroke-width="2.2" stroke-linecap="round"/>
+      </g>
+      <g class="monster-smug-mouth">
+        <path d="M134 184 Q157 199 182 181" fill="none" stroke="#5a463c" stroke-width="3.2" stroke-linecap="round"/>
+        <path d="M178 181 Q184 181 188 185" fill="none" stroke="#5a463c" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M145 190 l2 6 3 -6 M164 190 l3 5 2 -5" fill="#fff8e9" opacity=".9"/>
+        <ellipse cx="103" cy="188" rx="9" ry="4" fill="#d88277" opacity=".35"/>
+        <ellipse cx="217" cy="188" rx="9" ry="4" fill="#d88277" opacity=".35"/>
+      </g>
+      <g class="monster-roar-mouth">
+        <path d="M132 177 Q160 165 188 177 Q183 214 160 216 Q137 214 132 177Z" fill="#4b2328" stroke="#2f181b" stroke-width="2.4"/>
+        <path d="M138 178 L150 192 L160 178 L170 192 L182 178" fill="#fff3d2" opacity=".96"/>
+        <path d="M139 202 Q160 214 181 202 Q160 224 139 202Z" fill="#bc5f63"/>
+        <path d="M143 181 L147 190 M177 181 L173 190" stroke="#2f181b" stroke-width="2" stroke-linecap="round"/>
+      </g>
+      <g class="monster-angry-mouth">
+        <ellipse cx="160" cy="189" rx="17" ry="12" fill="#5a2f31" stroke="#352022" stroke-width="2"/>
+        <path d="M146 183 L154 191 L160 182 L166 191 L174 183" fill="#fff3d2" opacity=".9"/>
+        <ellipse cx="160" cy="196" rx="7" ry="4" fill="#c46e6a" opacity=".7"/>
       </g>
       <path d="M78 209 C54 202 43 219 54 236 C62 247 76 245 84 233" fill="url(#${bodyId})" stroke="#302020" stroke-width="3"/>
       <path d="M253 211 C279 204 290 223 278 239 C269 250 255 246 247 234" fill="url(#${bodyId})" stroke="#302020" stroke-width="3"/>
@@ -2839,16 +3438,73 @@ function sfxMonsterHurt() {
 }
 
 function sfxMonsterAttack(info = {}) {
+  const type = info.type || "claw";
+  if (type === "claw") {
+    noise({ delay: 0, duration: 0.36, gain: 0.06, filterType: "bandpass", freq: 220, endFreq: 720, filterQ: 0.65, pan: 0.2, panEnd: -0.25, wet: 0.26 });
+    tone({ freq: 118, endFreq: 48, type: "sawtooth", delay: 0.02, duration: 0.42, gain: 0.055, pan: 0.2, wet: 0.25, filterType: "lowpass", filterFreq: 620, filterEnd: 210 });
+    tone({ freq: 220, endFreq: 150, type: "triangle", delay: 0.12, duration: 0.22, gain: 0.03, pan: 0.1, wet: 0.2 });
+    noise({ delay: 0.27, duration: 0.2, gain: 0.055, filterType: "highpass", freq: 1800, filterQ: 0.7, pan: -0.25, wet: 0.22 });
+  } else if (type === "fire") {
+    tone({ freq: 96, endFreq: 54, type: "sawtooth", delay: 0, duration: 0.55, gain: 0.052, pan: 0.15, wet: 0.26, filterType: "lowpass", filterFreq: 520, filterEnd: 150 });
+    noise({ delay: 0.12, duration: 0.7, gain: 0.045, filterType: "bandpass", freq: 700, endFreq: 1800, filterQ: 0.55, pan: 0.15, panEnd: -0.35, wet: 0.3 });
+    for (let i = 0; i < 4; i += 1) {
+      noise({ delay: 0.2 + i * 0.13, duration: 0.35, gain: 0.022, filterType: "highpass", freq: 2600 + i * 350, filterQ: 0.5, pan: 0.1 - i * 0.08, wet: 0.28 });
+    }
+    tone({ freq: 260, endFreq: 90, type: "triangle", delay: 0.1, duration: 0.5, gain: 0.023, pan: 0.05, wet: 0.3 });
+  } else if (type === "wing") {
+    noise({ delay: 0, duration: 0.35, gain: 0.055, filterType: "bandpass", freq: 460, endFreq: 160, filterQ: 0.55, pan: 0.35, panEnd: 0.1, wet: 0.25 });
+    noise({ delay: 0.16, duration: 0.5, gain: 0.05, filterType: "bandpass", freq: 900, endFreq: 3400, filterQ: 0.65, pan: 0.25, panEnd: -0.4, wet: 0.3 });
+    tone({ freq: 146, endFreq: 73, type: "sawtooth", delay: 0.04, duration: 0.5, gain: 0.04, pan: 0.3, wet: 0.2 });
+    tone({ freq: 1174, endFreq: 587, type: "triangle", delay: 0.32, duration: 0.36, gain: 0.027, pan: 0.1, wet: 0.4 });
+    pluck(1568, 0.42, 0.36, 0.017, -0.1, 0.48);
+  } else {
+    tone({ freq: 72, endFreq: 39, type: "sawtooth", delay: 0, duration: 1.2, gain: 0.07, pan: 0.2, wet: 0.3, filterType: "lowpass", filterFreq: 420, filterEnd: 110 });
+    noise({ delay: 0.05, duration: 0.8, gain: 0.05, filterType: "lowpass", freq: 500, endFreq: 140, filterQ: 0.5, pan: 0.2, wet: 0.24 });
+    tone({ freq: 116, endFreq: 58, type: "sawtooth", delay: 0.18, duration: 0.72, gain: 0.05, pan: 0.05, wet: 0.28 });
+    tone({ freq: 156, endFreq: 78, type: "triangle", delay: 0.3, duration: 0.8, gain: 0.032, pan: 0.15, wet: 0.3 });
+    for (let i = 0; i < 3; i += 1) {
+      noise({ delay: 0.55 + i * 0.25, duration: 0.35, gain: 0.02, filterType: "bandpass", freq: 2600 - i * 400, endFreq: 700, filterQ: 0.6, pan: 0.3 - i * 0.25, wet: 0.25 });
+    }
+  }
+}
+
+function sfxHeroHit(info = {}) {
+  const type = info.type || "claw";
   const blocked = Boolean(info.blocked);
-  noise({ delay: 0, duration: 0.36, gain: 0.06, filterType: "bandpass", freq: 220, endFreq: 720, filterQ: 0.65, pan: 0.2, panEnd: -0.25, wet: 0.26 });
-  tone({ freq: 118, endFreq: 48, type: "sawtooth", delay: 0.02, duration: 0.42, gain: 0.055, pan: 0.2, wet: 0.25, filterType: "lowpass", filterFreq: 620, filterEnd: 210 });
-  tone({ freq: 220, endFreq: 150, type: "triangle", delay: 0.12, duration: 0.22, gain: 0.03, pan: 0.1, wet: 0.2 });
-  noise({ delay: 0.27, duration: 0.2, gain: 0.055, filterType: "highpass", freq: 1800, filterQ: 0.7, pan: -0.25, wet: 0.22 });
-  impact(0.39, -0.2, 1.2);
+  const weight = type === "meteor" ? 1.55 : type === "wing" ? 1.25 : type === "fire" ? 1.16 : 1.1;
+  impact(0, -0.16, weight);
+  noise({ delay: 0, duration: 0.2, gain: 0.05, filterType: type === "fire" ? "highpass" : "bandpass", freq: type === "fire" ? 2400 : 1300, endFreq: 430, filterQ: 0.55, pan: -0.2, wet: 0.24 });
+  if (type === "fire") {
+    noise({ delay: 0.02, duration: 0.48, gain: 0.03, filterType: "bandpass", freq: 1800, endFreq: 600, filterQ: 0.55, pan: -0.3, wet: 0.3 });
+    tone({ freq: 220, endFreq: 82, type: "sawtooth", delay: 0.04, duration: 0.36, gain: 0.025, pan: -0.2, wet: 0.2 });
+  } else if (type === "wing") {
+    noise({ delay: 0.02, duration: 0.36, gain: 0.038, filterType: "highpass", freq: 2600, filterQ: 0.55, pan: -0.35, wet: 0.3 });
+    tone({ freq: 880, endFreq: 440, type: "triangle", delay: 0.03, duration: 0.28, gain: 0.018, pan: -0.2, wet: 0.35 });
+  } else if (type === "meteor") {
+    tone({ freq: 63, endFreq: 35, type: "sine", delay: 0.12, duration: 0.72, gain: 0.07, pan: -0.1, wet: 0.3 });
+    noise({ delay: 0.1, duration: 0.55, gain: 0.04, filterType: "lowpass", freq: 320, endFreq: 90, filterQ: 0.5, pan: -0.25, wet: 0.25 });
+  }
   if (blocked) {
-    tone({ freq: 1318.5, type: "sine", delay: 0.38, duration: 0.5, gain: 0.032, pan: -0.3, wet: 0.55 });
-    tone({ freq: 1760, type: "triangle", delay: 0.44, duration: 0.46, gain: 0.021, pan: -0.2, wet: 0.62 });
-    noise({ delay: 0.37, duration: 0.3, gain: 0.022, filterType: "highpass", freq: 4600, filterQ: 0.6, pan: -0.3, wet: 0.5 });
+    tone({ freq: 1318.5, type: "sine", delay: 0.02, duration: 0.5, gain: 0.032, pan: -0.3, wet: 0.55 });
+    tone({ freq: 1760, type: "triangle", delay: 0.08, duration: 0.46, gain: 0.021, pan: -0.2, wet: 0.62 });
+    noise({ delay: 0.02, duration: 0.3, gain: 0.022, filterType: "highpass", freq: 4600, filterQ: 0.6, pan: -0.3, wet: 0.5 });
+  }
+}
+
+function sfxMonsterEvolve(info = {}) {
+  const phase = info.phase || 2;
+  tone({ freq: phase === 4 ? 58 : 76, endFreq: 42, type: "sawtooth", delay: 0, duration: phase === 4 ? 1.2 : 0.8, gain: 0.06, pan: 0.2, wet: 0.3, filterType: "lowpass", filterFreq: 480, filterEnd: 130 });
+  if (phase === 2) {
+    noise({ delay: 0.12, duration: 0.55, gain: 0.04, filterType: "bandpass", freq: 600, endFreq: 1900, filterQ: 0.55, pan: 0.2, panEnd: -0.2, wet: 0.3 });
+    tone({ freq: 146, endFreq: 220, type: "sawtooth", delay: 0.16, duration: 0.45, gain: 0.03, pan: 0.15, wet: 0.25 });
+  } else if (phase === 3) {
+    noise({ delay: 0, duration: 0.3, gain: 0.05, filterType: "bandpass", freq: 420, endFreq: 150, filterQ: 0.5, pan: 0.3, wet: 0.2 });
+    noise({ delay: 0.14, duration: 0.55, gain: 0.045, filterType: "bandpass", freq: 880, endFreq: 2600, filterQ: 0.6, pan: 0.1, panEnd: -0.2, wet: 0.32 });
+    [196, 233.08, 293.66].forEach((freq, index) => tone({ freq, type: "triangle", delay: 0.18 + index * 0.08, duration: 0.65, gain: 0.02, pan: 0.05, wet: 0.45 }));
+  } else {
+    tone({ freq: 87, endFreq: 43, type: "sawtooth", delay: 0.1, duration: 1.3, gain: 0.062, pan: 0.2, wet: 0.32 });
+    noise({ delay: 0.2, duration: 0.9, gain: 0.048, filterType: "lowpass", freq: 600, endFreq: 170, filterQ: 0.5, pan: 0.2, wet: 0.24 });
+    [116.54, 155.56, 196].forEach((freq, index) => tone({ freq, type: "sawtooth", delay: 0.24 + index * 0.1, duration: 0.9, gain: 0.026, pan: 0.05, wet: 0.4 }));
   }
 }
 
@@ -2899,13 +3555,28 @@ function playSound(name, info = {}) {
   else if (name === "mage") sfxMage(info.heroId, info);
   else if (name === "warrior") sfxWarrior(info);
   else if (name === "monsterAttack") sfxMonsterAttack(info);
+  else if (name === "heroHit") sfxHeroHit(info);
+  else if (name === "monsterEvolve") sfxMonsterEvolve(info);
   else if (name === "monsterHurt") sfxMonsterHurt();
   else if (name === "victory") sfxVictory();
   else if (name === "defeat") sfxDefeat();
 }
 
 
-const TOTAL_ROUNDS = 10;
+const BATCH_SIZE = 10;
+const MONSTER_ATTACKS = {
+  1: { type: "claw", name: "赤焰兽爪", label: "兽爪", damage: 26, timing: 480, feedback: 1160 },
+  2: { type: "fire", name: "炽焰喷吐", label: "喷火", damage: 28, timing: 760, feedback: 1540 },
+  3: { type: "wing", name: "裂空翼斩", label: "翼斩", damage: 32, timing: 800, feedback: 1580 },
+  4: { type: "meteor", name: "陨火天罚", label: "陨石", damage: 38, timing: 1220, feedback: 2000 }
+};
+const MONSTER_FORMS = {
+  0: { title: "赤焰掠夺者", phase: "基础" },
+  1: { title: "赤焰掠夺者", phase: "基础" },
+  2: { title: "炽焰掠夺者", phase: "喷火" },
+  3: { title: "翼焰掠夺者", phase: "翼击" },
+  4: { title: "熔火领主", phase: "终极" }
+};
 const ENEMY_MAX_HP = ENEMY.hp;
 const PUBLIC_URL = "https://x15737876973-art.github.io/daur-quiz/";
 
@@ -2928,7 +3599,9 @@ const state = {
   winner: null,
   endReason: "",
   traitUsed: false,
-  lastTurn: null
+  lastTurn: null,
+  wrongStreak: 0,
+  monsterPhase: 0
 };
 
 const $ = (id) => document.getElementById(id);
@@ -2988,6 +3661,8 @@ const enemyHpTrack = $("enemyHpTrack");
 const enemyHpCard = $("enemyHpCard");
 const enemyAbility = $("enemyAbility");
 const enemyAbilityDetail = $("enemyAbilityDetail");
+const enemyTitleSmall = $("enemyTitleSmall");
+const enemyTagText = $("enemyTagText");
 const roundNumber = $("roundNumber");
 const questionNumber = $("questionNumber");
 const categoryPill = $("categoryPill");
@@ -3096,7 +3771,7 @@ function savePreferences() {
 }
 
 function buildDeck(hero) {
-  const pool = shuffle(hero.pool).slice(0, TOTAL_ROUNDS);
+  const pool = shuffle(hero.pool).slice(0, BATCH_SIZE);
   return pool.map((question) => {
     const optionsList = [...question.options];
     const correctText = optionsList[0];
@@ -3230,7 +3905,7 @@ async function shareGame() {
   playSound("ui");
   const shareData = {
     title: document.title,
-    text: "5位达斡尔族英雄、5套衣装、100道文化题，每局随机10题。",
+    text: "5位达斡尔族英雄、5套衣装、100道文化题。随机抽题，直到击破会喷火、长翼、召唤陨石的雾团兽。",
     url: PUBLIC_URL
   };
   if (navigator.share) {
@@ -3246,6 +3921,46 @@ async function shareGame() {
     showToast("游戏链接已复制，发给朋友吧");
   } catch (error) {
     window.prompt("复制这个链接分享：", PUBLIC_URL);
+  }
+}
+
+function monsterAttackForPhase(phase) {
+  return MONSTER_ATTACKS[Math.max(1, Math.min(4, phase || 1))] || MONSTER_ATTACKS[1];
+}
+
+function monsterFormForPhase(phase) {
+  return MONSTER_FORMS[Math.max(0, Math.min(4, phase || 0))] || MONSTER_FORMS[0];
+}
+
+function updateMonsterUI() {
+  const attack = monsterAttackForPhase(state.monsterPhase);
+  enemyAbility.textContent = attack.name;
+  enemyAbilityDetail.textContent = `答错 -${attack.damage} HP`;
+  if (enemyTitleSmall) enemyTitleSmall.textContent = monsterFormForPhase(state.monsterPhase).title;
+  if (enemyTagText) enemyTagText.textContent = monsterFormForPhase(state.monsterPhase).title;
+  enemyHpCard.dataset.phase = String(state.monsterPhase);
+}
+
+function setMonsterForm() {
+  const phase = state.monsterPhase;
+  enemyFighter.classList.toggle("has-wings", phase >= 3);
+  enemyFighter.classList.toggle("has-horns", phase >= 4);
+  enemyFighter.classList.toggle("form-ultimate", phase >= 4);
+}
+
+function announceMonsterPhase(phase) {
+  if (phase === 2) {
+    showTraitCallout("怪兽进化 · 喷火", "炽焰喷吐", "red");
+    addLog("system", "雾团兽被连续答错激怒，进入了 <strong>喷火形态</strong>。");
+    playSound("monsterEvolve", { phase });
+  } else if (phase === 3) {
+    showTraitCallout("怪兽进化 · 长翼", "裂空翼斩", "red");
+    addLog("system", "雾团兽背后长出 <strong>赤焰双翼</strong>，翅膀形态会一直保留。");
+    playSound("monsterEvolve", { phase });
+  } else if (phase === 4) {
+    showTraitCallout("终极形态 · 熔火领主", "陨火天罚", "red");
+    addLog("system", "雾团兽长出 <strong>两只长角</strong>，进入终极形态，天空开始落下岩浆陨石。");
+    playSound("monsterEvolve", { phase });
   }
 }
 
@@ -3270,6 +3985,8 @@ function startBattle() {
   state.endReason = "";
   state.traitUsed = false;
   state.lastTurn = null;
+  state.wrongStreak = 0;
+  state.monsterPhase = 0;
   fxVersion += 1;
   sparkVersion += 1;
   calloutVersion += 1;
@@ -3302,8 +4019,7 @@ function startBattle() {
   heroClassTag.textContent = hero.classCN;
   heroAbility.textContent = hero.traitName;
   heroAbilityDetail.textContent = hero.abilityHint || shortTrait(hero);
-  enemyAbility.textContent = ENEMY.traitName;
-  enemyAbilityDetail.textContent = `答错 -${ENEMY.atk} HP`;
+  updateMonsterUI();
   correctValue.textContent = "0";
   wrongValue.textContent = "0";
   updateHpMax();
@@ -3314,7 +4030,7 @@ function startBattle() {
   renderQuestion();
   logList.innerHTML = "";
   addLog("system", `雾团兽卷起赤焰，拦住了${hero.name}的去路。`);
-  addLog("system", `本局从${hero.name}的专属题库随机抽取 <strong>10 道题</strong>，答对攻击，答错被兽爪反击。`);
+  addLog("system", `随机抽题直到击破雾团兽；连续答错会激怒它，依次学会喷火、长出翅膀、进入终极形态。`);
   later(() => {
     quizCard.animate(
       [{ opacity: 0, transform: "translateY(12px)" }, { opacity: 1, transform: "translateY(0)" }],
@@ -3342,14 +4058,14 @@ function updateHpMax() {
 
 function renderPips() {
   roundPips.innerHTML = "";
-  for (let i = 0; i < TOTAL_ROUNDS; i += 1) {
+  const recent = state.results.slice(-BATCH_SIZE);
+  for (let i = 0; i < BATCH_SIZE; i += 1) {
     const pip = document.createElement("span");
     pip.className = "pip";
-    const result = state.results[i];
+    const result = recent[i];
     if (result === "correct") pip.classList.add("is-correct");
     else if (result === "wrong") pip.classList.add("is-wrong");
-    else if (i === state.round && !state.over) pip.classList.add("is-current");
-    pip.setAttribute("aria-label", `第 ${i + 1} 题${result ? (result === "correct" ? "答对" : "答错") : ""}`);
+    pip.setAttribute("aria-label", `最近第 ${i + 1} 次答题${result ? (result === "correct" ? "答对" : "答错") : ""}`);
     roundPips.appendChild(pip);
   }
 }
@@ -3425,8 +4141,13 @@ function renderStatusChip() {
 }
 
 function renderQuestion() {
+  if (state.round >= state.deck.length) {
+    state.deck = state.deck.concat(buildDeck(state.hero));
+  }
   const question = state.deck[state.round];
   if (!question) return;
+  enemyFighter.classList.remove("attacking", "breathing-fire", "wing-attacking", "smug", "roaring", "pained");
+  heroFighter.classList.remove("hit");
   state.answered = false;
   state.busy = false;
   feedback.className = "feedback hidden";
@@ -3675,24 +4396,114 @@ function spawnHeroImpact(hero, info) {
   else spawnWarriorImpact(hero, info);
 }
 
-function spawnMonsterRoar() {
+function beginMonsterFX(markup, lifetime = 2200) {
   fxVersion += 1;
   const version = fxVersion;
-  const distance = Math.max(135, Math.min(340, battleStage.clientWidth * 0.42));
-  arena.style.setProperty("--lunge", `-${distance}px`);
-  fxLayer.innerHTML = '<div class="fx-roar">兽爪！</div>';
+  fxLayer.innerHTML = markup;
   later(() => {
     if (version === fxVersion) fxLayer.innerHTML = "";
-  }, 1500);
+  }, lifetime);
 }
 
-function spawnMonsterImpact() {
+function spawnMonsterRoar() {
+  const distance = Math.max(135, Math.min(340, battleStage.clientWidth * 0.42));
+  arena.style.setProperty("--lunge", `-${distance}px`);
+  beginMonsterFX('<div class="fx-roar">兽爪！</div>', 1500);
+}
+
+function spawnClawImpact() {
   fxLayer.insertAdjacentHTML("beforeend", `
     <span class="fx-claw c1" style="--rot:-24deg"></span>
     <span class="fx-claw c2" style="--rot:-9deg"></span>
     <span class="fx-claw c3" style="--rot:5deg"></span>
     <div class="fx-enemy-burst" style="left:25%;top:45%"></div>
     <div class="fx-roar" style="left:24%;top:29%;color:#ffd2a8;font-size:16px">命中！</div>
+  `);
+}
+
+function spawnFireBreath() {
+  const embers = Array.from({ length: 16 }, () => {
+    const sx = 62 + Math.random() * 10;
+    const sy = 48 + Math.random() * 9;
+    const dx = -190 - Math.random() * 170;
+    const dy = -70 + Math.random() * 100;
+    const delay = (Math.random() * 0.5).toFixed(2);
+    return `<span class="fx-fire-ember" style="--sx:${sx}%;--sy:${sy}%;--dx:${dx}px;--dy:${dy}px;--delay:${delay}s"></span>`;
+  }).join("");
+  beginMonsterFX(`
+    <div class="fx-fire-cone"></div>
+    <div class="fx-fire-mouth"></div>
+    <div class="fx-fireball" style="--top:43%;--size:28px;--delay:.04s"></div>
+    <div class="fx-fireball" style="--top:49%;--size:21px;--delay:.16s"></div>
+    <div class="fx-fireball" style="--top:56%;--size:18px;--delay:.3s"></div>
+    <div class="fx-scorch"></div>
+    ${embers}
+  `, 2100);
+}
+
+function spawnFireImpact() {
+  fxLayer.insertAdjacentHTML("beforeend", `
+    <div class="fx-meteor-burst" style="left:24%;top:47%;width:210px;height:210px;margin:-105px"></div>
+    <div class="fx-lava" style="--sx:14%;--size:110px;--delay:0s"></div>
+    <div class="fx-lava" style="--sx:18%;--size:70px;--delay:.08s"></div>
+  `);
+}
+
+function spawnWingAttack() {
+  const feathers = Array.from({ length: 14 }, () => {
+    const sx = 55 + Math.random() * 20;
+    const sy = 34 + Math.random() * 20;
+    const dx = -160 - Math.random() * 150;
+    const dy = 30 + Math.random() * 90;
+    const rot = Math.round(-220 + Math.random() * 440);
+    const delay = (Math.random() * 0.25).toFixed(2);
+    return `<span class="fx-wing-feather" style="--sx:${sx}%;--sy:${sy}%;--dx:${dx}px;--dy:${dy}px;--rot:${rot}deg;--delay:${delay}s"></span>`;
+  }).join("");
+  beginMonsterFX(`
+    <div class="fx-wing-gust"></div>
+    <div class="fx-wing-slash" style="--top:31%;--h:25%;--rot:-15deg;--delay:.03s"></div>
+    <div class="fx-wing-slash" style="--top:43%;--h:30%;--rot:-4deg;--delay:.1s"></div>
+    <div class="fx-wing-slash" style="--top:52%;--h:22%;--rot:8deg;--delay:.17s"></div>
+    <div class="fx-wind-line" style="--top:38%;--delay:.04s"></div>
+    <div class="fx-wind-line" style="--top:49%;--delay:.12s"></div>
+    <div class="fx-wind-line" style="--top:60%;--delay:.2s"></div>
+    ${feathers}
+  `, 2200);
+}
+
+function spawnWingImpact() {
+  fxLayer.insertAdjacentHTML("beforeend", `
+    <div class="fx-enemy-burst" style="left:25%;top:45%;width:190px;height:190px;margin:-95px"></div>
+    <div class="fx-wing-slash" style="left:8%;top:44%;--h:34%;--rot:-22deg;--delay:0s"></div>
+    <div class="fx-wing-feather" style="--sx:30%;--sy:45%;--dx:-80px;--dy:80px;--rot:220deg;--delay:.02s"></div>
+  `);
+}
+
+function spawnMeteorAttack() {
+  const meteors = Array.from({ length: 7 }, (_, index) => {
+    const sx = 48 + Math.random() * 42;
+    const ex = 19 + Math.random() * 16;
+    const ey = 38 + Math.random() * 13;
+    const size = 18 + Math.random() * 18;
+    const delay = (Math.random() * 0.38).toFixed(2);
+    const dur = (0.9 + Math.random() * 0.3).toFixed(2);
+    return `<span class="fx-meteor" style="--sx:${sx}%;--ex:${ex}%;--ey:${ey}%;--size:${size}px;--delay:${delay}s;--dur:${dur}s"></span>`;
+  }).join("");
+  beginMonsterFX(`
+    <div class="fx-meteor-shade"></div>
+    <div class="fx-roar-big">吼——</div>
+    ${meteors}
+  `, 2600);
+}
+
+function spawnMeteorImpact() {
+  fxLayer.insertAdjacentHTML("beforeend", `
+    <div class="fx-meteor-burst"></div>
+    <div class="fx-meteor-burst" style="left:31%;top:52%;width:160px;height:160px;margin:-80px;animation-delay:.08s"></div>
+    <div class="fx-meteor-burst" style="left:18%;top:38%;width:130px;height:130px;margin:-65px;animation-delay:.14s"></div>
+    <div class="fx-lava" style="--sx:13%;--size:120px;--delay:0s"></div>
+    <div class="fx-lava" style="--sx:24%;--size:80px;--delay:.1s"></div>
+    <div class="fx-lava" style="--sx:32%;--size:55px;--delay:.17s"></div>
   `);
 }
 
@@ -3704,9 +4515,9 @@ function showResult() {
   resultKicker.textContent = victory ? "VICTORY · 赤焰熄灭" : "DEFEAT · 雾团兽守住了赤焰";
   resultTitle.textContent = victory ? "赤焰熄灭！" : "赤焰未熄";
   resultSub.textContent = victory
-    ? `${hero.name}守住了草原的知识之火。雾团兽收起了爪子，抱着它的小木牌躲进了余烬里。`
+    ? `${hero.name}击破了雾团兽的最终形态，守住了草原的知识之火。赤焰散去，小兽抱着它的小木牌躲进了余烬里。`
     : `雾团兽的赤焰仍在大地上跳动。${hero.name}，再读一遍解析，下一次把知识之火夺回来。`;
-  resultReason.textContent = state.endReason || "十题战罢，胜负已分。";
+  resultReason.textContent = state.endReason || "战斗结束。";
   resultCorrect.textContent = String(state.correct);
   resultWrong.textContent = String(state.wrong);
   resultHp.textContent = String(Math.max(0, Math.round(state.heroHP)));
@@ -3744,7 +4555,7 @@ function finishTurn() {
     state.over = true;
     state.winner = enemyDead ? "hero" : "enemy";
     state.endReason = enemyDead
-      ? `雾团兽的 HP 归零，${state.hero.name}用知识击退了赤焰。`
+      ? `雾团兽的 HP 归零，${state.hero.name}用知识击破了它的进化形态。`
       : `${state.hero.name}的 HP 归零，雾团兽的赤焰席卷了战场。`;
     renderPips();
     if (enemyDead) {
@@ -3755,17 +4566,6 @@ function finishTurn() {
       heroFighter.classList.add("defeated");
       addLog("system", `${state.hero.name}的 HP 归零，雾团兽获得了这场赤焰对决。`);
     }
-    nextBtnText.textContent = "查看战果";
-    return;
-  }
-  if (state.round >= TOTAL_ROUNDS - 1) {
-    state.over = true;
-    const heroPct = state.heroHP / state.hero.hp;
-    const enemyPct = state.enemyHP / ENEMY_MAX_HP;
-    state.winner = heroPct >= enemyPct ? "hero" : "enemy";
-    state.endReason = `十题战罢，${state.hero.name}剩余 ${Math.round(heroPct * 100)}% 生命，雾团兽剩余 ${Math.round(enemyPct * 100)}% 生命，按剩余生命判定胜负。`;
-    renderPips();
-    addLog("system", `十题结束，双方仍未倒下。按剩余生命值判定：<strong>${state.winner === "hero" ? state.hero.name : ENEMY.name}</strong>获胜。`);
     nextBtnText.textContent = "查看战果";
     return;
   }
@@ -3863,6 +4663,7 @@ function answerQuestion(optionIndex) {
 
   const hero = state.hero;
   if (isCorrect) {
+    state.wrongStreak = 0;
     state.correct += 1;
     correctValue.textContent = String(state.correct);
     const outcome = computeHeroAttack();
@@ -3886,11 +4687,11 @@ function answerQuestion(optionIndex) {
       updateHP("enemy");
       spawnHeroImpact(hero, { big: outcome.big, bonus: outcome.bonus, combo: outcome.combo });
       flashArena(hero.className === "archer" ? "flash-fire" : hero.className === "mage" ? "flash-magic" : "flash-holy");
-      enemyFighter.classList.remove("pained");
+      enemyFighter.classList.remove("attacking", "breathing-fire", "wing-attacking", "smug", "roaring", "pained");
       void enemyFighter.offsetWidth;
       enemyFighter.classList.add("pained");
       playSound("monsterHurt", {});
-      later(() => enemyFighter.classList.remove("pained"), 660);
+      later(() => enemyFighter.classList.remove("pained"), 1020);
       showDamage("enemy", outcome.damage, { big: outcome.big, magic: hero.className === "mage", label: outcome.label });
       showPainMarks();
       spawnSparks("enemy", hero.id === "kumule" ? ["#d6f0ae", "#9ed394", "#f7e5a6"] : hero.id === "uqun" ? ["#ffb06a", "#ff7c45", "#ffe1a0"] : ["#f6d58b", "#ffecc0", "#e9ab54"]);
@@ -3912,44 +4713,84 @@ function answerQuestion(optionIndex) {
     }, timing + 560);
   } else {
     state.wrong += 1;
+    state.wrongStreak += 1;
     wrongValue.textContent = String(state.wrong);
     state.combo = 0;
+    const previousPhase = state.monsterPhase;
+    state.monsterPhase = Math.min(4, Math.max(state.monsterPhase, state.wrongStreak));
+    setMonsterForm();
+    updateMonsterUI();
     renderStatusChip();
     renderPips();
-    playSound("monsterAttack", {});
-    enemyFighter.classList.remove("attacking");
-    void enemyFighter.offsetWidth;
-    enemyFighter.classList.add("attacking");
-    later(() => enemyFighter.classList.remove("attacking"), 1120);
-    spawnMonsterRoar();
-    const absorbed = Math.min(state.shield, ENEMY.atk);
-    const actual = ENEMY.atk - absorbed;
+    const attack = monsterAttackForPhase(state.monsterPhase);
+    if (state.monsterPhase > previousPhase) {
+      announceMonsterPhase(state.monsterPhase);
+    }
+    enemyFighter.classList.remove("attacking", "breathing-fire", "wing-attacking", "smug", "roaring", "pained");
+    const absorbed = Math.min(state.shield, attack.damage);
+    const actual = attack.damage - absorbed;
     state.shield = Math.max(0, state.shield - absorbed);
-    state.lastTurn = { correct: false, absorbed, actual, total: ENEMY.atk };
+    state.lastTurn = {
+      correct: false,
+      absorbed,
+      actual,
+      total: attack.damage,
+      attackName: attack.name,
+      attackType: attack.type,
+      phase: state.monsterPhase
+    };
+    playSound("monsterAttack", { type: attack.type, phase: state.monsterPhase });
+    if (attack.type === "claw") {
+      enemyFighter.classList.add("attacking");
+      spawnMonsterRoar();
+    } else if (attack.type === "fire") {
+      enemyFighter.classList.add("breathing-fire", "smug");
+      spawnFireBreath();
+    } else if (attack.type === "wing") {
+      enemyFighter.classList.add("wing-attacking");
+      spawnWingAttack();
+    } else {
+      enemyFighter.classList.add("roaring");
+      spawnMeteorAttack();
+    }
+    later(() => {
+      enemyFighter.classList.remove("attacking", "breathing-fire", "wing-attacking", "smug", "roaring");
+    }, attack.feedback + 260);
     later(() => {
       state.heroHP = Math.max(0, state.heroHP - actual);
       updateHP("hero");
-      spawnMonsterImpact();
-      flashArena("flash-bad");
+      if (attack.type === "claw") spawnClawImpact();
+      else if (attack.type === "fire") spawnFireImpact();
+      else if (attack.type === "wing") spawnWingImpact();
+      else spawnMeteorImpact();
+      flashArena(attack.type === "claw" ? "flash-bad" : attack.type === "fire" ? "flash-fireball" : attack.type === "wing" ? "flash-wing" : "flash-meteor");
       heroFighter.classList.remove("hit");
       void heroFighter.offsetWidth;
       heroFighter.classList.add("hit");
-      later(() => heroFighter.classList.remove("hit"), 700);
-      showDamage("hero", actual, { label: absorbed > 0 ? "兽爪" : "HP" });
+      later(() => heroFighter.classList.remove("hit"), 1100);
+      playSound("heroHit", { type: attack.type, blocked: absorbed > 0 });
+      showDamage("hero", actual, { big: attack.type === "meteor", label: attack.label });
       if (absorbed > 0) showShieldAbsorb(absorbed);
-      spawnSparks("hero", ["#ff9b78", "#ffd0a2", "#d9523f"], 12);
+      spawnSparks("hero", attack.type === "fire" ? ["#ffd071", "#ff8b43", "#d9523f"] : ["#ff9b78", "#ffd0a2", "#d9523f"], attack.type === "meteor" ? 20 : 12);
       shakeArena();
       const hitText = absorbed > 0
         ? `<strong>${absorbed}</strong> 点伤害被柳芽护盾挡下，英雄实际损失 <strong>${actual}</strong> HP。`
-        : `英雄受到 <strong>${actual}</strong> 点兽爪伤害。`;
-      addLog("bad", `答案错误，<strong>阿雾</strong>突进到${hero.name}面前挥出兽爪。${hitText}`, absorbed > 0 ? `护盾 -${absorbed} · 英雄 -${actual} HP` : `英雄 -${actual} HP`);
+        : `英雄受到 <strong>${actual}</strong> 点伤害。`;
+      const actionText = attack.type === "claw"
+        ? `<strong>阿雾</strong>突进到${hero.name}面前挥出兽爪。`
+        : attack.type === "fire"
+          ? `<strong>阿雾</strong>露出得意的表情，喷出炽焰。`
+          : attack.type === "wing"
+            ? `<strong>阿雾</strong>展开翅膀，翼刃扫向${hero.name}。`
+            : `<strong>阿雾</strong>仰天怒吼，岩浆陨石从天而降。`;
+      addLog("bad", `答案错误，${actionText}${hitText}`, absorbed > 0 ? `护盾 -${absorbed} · 英雄 -${actual} HP` : `英雄 -${actual} HP`);
       renderStatusChip();
-    }, 480);
+    }, attack.timing);
     later(() => {
       state.busy = false;
       showFeedback(false, question);
       finishTurn();
-    }, 1160);
+    }, attack.feedback);
   }
 }
 
@@ -3968,9 +4809,10 @@ function showFeedback(isCorrect, question) {
     feedbackLine.innerHTML = detail;
   } else {
     feedbackTitle.textContent = `答错了！正确答案是「${question.options[question.answer]}」`;
+    const attackLabel = turn.attackName || "赤焰兽爪";
     feedbackLine.innerHTML = turn.absorbed > 0
-      ? `雾团兽反击 ${turn.total} 点，柳芽护盾抵挡 ${turn.absorbed} 点，英雄 -${turn.actual} HP`
-      : `雾团兽的兽爪命中，英雄 -${turn.actual || ENEMY.atk} HP`;
+      ? `${attackLabel}造成 ${turn.total} 点伤害，柳芽护盾抵挡 ${turn.absorbed} 点，英雄 -${turn.actual} HP`
+      : `${attackLabel}命中，英雄 -${turn.actual || 26} HP`;
   }
   feedbackExplain.innerHTML = `<b>正确解析：</b>${question.explain}`;
   feedbackSource.textContent = `知识分类 · ${question.cat}`;
@@ -4027,11 +4869,10 @@ function init() {
       showResult();
       return;
     }
-    if (state.round >= TOTAL_ROUNDS - 1) {
-      finishTurn();
-      return;
-    }
     state.round += 1;
+    if (state.round >= state.deck.length) {
+      state.deck = state.deck.concat(buildDeck(state.hero));
+    }
     renderQuestion();
   });
   againBtn.addEventListener("click", () => {
